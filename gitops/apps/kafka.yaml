@@ -15,7 +15,8 @@ spec:
       releaseName: kafka-cluster
       values: |
         image:
-          pullPolicy: IfNotPresent
+          tag: latest
+          pullPolicy: Always
         kraft:
           enabled: false
         replicaCount: 1
