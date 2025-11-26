@@ -15,9 +15,7 @@ spec:
       releaseName: kafka-cluster
       values: |
         image:
-          registry: docker.io
-          repository: bitnami/kafka
-          tag: 3.6.1-debian-12-r14
+          tag: "3.6"
         kraft:
           enabled: true
         controller:
