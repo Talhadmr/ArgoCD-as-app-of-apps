@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kafka-demo
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: [https://charts.bitnami.com/bitnami](https://charts.bitnami.com/bitnami)
+    chart: kafka
+    targetRevision: 26.x.x
+    helm:
+      releaseName: kafka-cluster
+      values: |
+        controller:
+          replicaCount: 1 # Keeping it low for local k3d demo resources
+        broker:
+          replicaCount: 1
+        zookeeper:
+          enabled: true
+  destination:
+    server: [https://kubernetes.default.svc](https://kubernetes.default.svc)
+    namespace: kafka-system
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: redis-demo
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: [https://charts.bitnami.com/bitnami](https://charts.bitnami.com/bitnami)
+    chart: redis
+    targetRevision: 18.x.x  # Specify a version for stability
+    helm:
+      releaseName: redis-cluster
+      # We can override values here directly or use a values file
+      values: |
+        architecture: replication
+        auth:
+          enabled: false
+  destination:
+    server: [https://kubernetes.default.svc](https://kubernetes.default.svc)
+    namespace: redis-system
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true # ArgoCD will create the namespace automatically
+
+
