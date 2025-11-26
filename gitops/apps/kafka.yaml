@@ -14,12 +14,18 @@ spec:
     helm:
       releaseName: kafka-cluster
       values: |
+        # Enable KRaft mode (No Zookeeper required)
+        kraft:
+          enabled: true
+        zookeeper:
+          enabled: false
         controller:
-          replicaCount: 0
+          replicaCount: 1
         broker:
           replicaCount: 1
-        zookeeper:
-          enabled: true
+        listeners:
+          client:
+            protocol: PLAINTEXT
   destination:
     server: https://kubernetes.default.svc
     namespace: kafka-system
