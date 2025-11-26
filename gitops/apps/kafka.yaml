@@ -8,7 +8,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: [https://charts.bitnami.com/bitnami](https://charts.bitnami.com/bitnami)
+    repoURL: https://charts.bitnami.com/bitnami
     chart: kafka
     targetRevision: 26.x.x
     helm:
@@ -21,7 +21,7 @@ spec:
         zookeeper:
           enabled: true
   destination:
-    server: [https://kubernetes.default.svc](https://kubernetes.default.svc)
+    server: https://kubernetes.default.svc
     namespace: kafka-system
   syncPolicy:
     automated:

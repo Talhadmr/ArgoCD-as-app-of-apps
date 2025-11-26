@@ -8,13 +8,13 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: [https://istio-release.storage.googleapis.com/charts](https://istio-release.storage.googleapis.com/charts)
+    repoURL: https://istio-release.storage.googleapis.com/charts
     chart: base
     targetRevision: 1.20.0
     helm:
       releaseName: istio-base
   destination:
-    server: [https://kubernetes.default.svc](https://kubernetes.default.svc)
+    server: https://kubernetes.default.svc
     namespace: istio-system
   syncPolicy:
     automated:

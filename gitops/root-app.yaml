@@ -8,13 +8,11 @@ metadata:
 spec:
   project: default
   source:
-    # Repository URL'niz
-    repoURL: [https://github.com/Talhadmr/ArgoCD-as-app-of-apps.git](https://github.com/Talhadmr/ArgoCD-as-app-of-apps.git)
+    repoURL: https://github.com/Talhadmr/ArgoCD-as-app-of-apps.git
     targetRevision: HEAD
-    # Git reponuzdaki child app'lerin bulunduğu yol
     path: gitops/apps
   destination:
-    server: [https://kubernetes.default.svc](https://kubernetes.default.svc)
+    server: https://kubernetes.default.svc
     namespace: argocd
   syncPolicy:
     automated:

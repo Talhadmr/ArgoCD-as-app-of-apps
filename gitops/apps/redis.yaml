@@ -8,7 +8,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: [https://charts.bitnami.com/bitnami](https://charts.bitnami.com/bitnami)
+    repoURL: https://charts.bitnami.com/bitnami
     chart: redis
     targetRevision: 18.x.x
     helm:
@@ -18,7 +18,7 @@ spec:
         auth:
           enabled: false
   destination:
-    server: [https://kubernetes.default.svc](https://kubernetes.default.svc)
+    server: https://kubernetes.default.svc
     namespace: redis-system
   syncPolicy:
     automated:
